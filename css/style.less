@@ -1,0 +1,335 @@
+@light-blue:     #68B2F8;
+@dark-blue:      #6200FF;
+@darkest-purple: #1D0C20;
+@darker-purple:  #28112c;
+@lighter-purple: #dbb1e2;
+@neon-purple:    #d247eb;
+@dark-purple:    #5a3960;
+@light-purple:   #a273ab;
+@light-gray:     #d4d4d4;
+@dark-grey:      #616161;
+@white:          #fff;
+@dark-shadow: 0 0 6px hsla(291, 45%, 9%, 0.5);
+
+body,
+html {
+  margin: 0;
+  font-family: 'Roboto Mono', serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  animation: animatedBackground 222s linear infinite;
+}
+
+nav {
+  width: 100%;
+  background: fade(@darker-purple, 60%);
+  border-bottom: 4px solid @light-blue;
+  z-index: 99;
+  position: fixed;
+  text-transform: uppercase;
+  transition: 0.9s all;
+  .icon {display: none;}
+}
+
+.changeColor {background: fade(@darker-purple, 100%);}
+
+.page-link {
+  -webkit-background-clip: text;
+  color: #fff;
+  background-image: linear-gradient(to right, #e033ff, #e033ff 50%, @white 50%);
+  background-size: 200% 100%;
+  background-position:  100%;
+  float: left;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-weight: bold;
+  &:hover {
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.000, 0.000, 0.230, 1);
+    background-position: 0;
+  }
+  &::after,
+  &::before {
+    margin: 4px 0;
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: @dark-blue;
+    transition: width 0.3s;
+  }
+  &:hover::after,
+  &:hover::before {
+    width: 100%;
+    color: #0084FF;
+  }
+}
+
+.bars {
+    display: inline-block;
+    cursor: pointer;
+    padding: 20px 16px 0;
+}
+
+.bar1, .bar2, .bar3 {
+    width: 30px;
+    height: 2px;
+    background-color: @white;
+    margin: 6px 0;
+    transition: 0.4s;
+}
+
+.change .bar1 {
+    -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+    transform:         rotate(-45deg) translate(-9px, 6px);
+}
+
+.change .bar2 {opacity: 0;}
+
+.change .bar3 {
+    -webkit-transform: rotate(45deg) translate(-4px, -3px);
+    transform:         rotate(45deg) translate(-4px, -3px);
+}
+
+section {
+  color: @dark-grey;
+  position: relative;
+}
+
+h1 {
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+}
+
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex.row {
+  flex-direction: row;
+  flex: 1 0 auto;
+}
+
+.flex.wrap {flex-wrap: wrap;}
+
+.flex.grow{
+  flex-grow: 1;
+  overflow:  hidden;
+}
+
+.info {
+  border: 1px solid @light-gray;
+  border-radius: 6px;
+  padding: 8px;
+  margin:  16px;
+  position: absolute;
+  right:  0px;
+  bottom: 0px;
+  z-index: 9;
+  box-shadow: 1px 2px 3px 0 hsla(291, 45%, 9%, 0.3);
+  &:hover {
+    bottom: 1px;
+    box-shadow: 0 2px 3px 1px hsla(291, 45%, 9%, 0.4);
+  }
+  i {
+    color: @light-gray;
+    font-size: 12pt;
+  }
+  .fa-times-circle {
+    display: none;
+  }
+}
+
+.info-expand {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10pt;
+  max-width: 80%;
+  max-height: 70vh;
+  overflow-y: scroll;
+
+  -webkit-animation: growInfo 1s ease-in 1; /* Safari, Chrome and Opera > 12.1 */
+     -moz-animation: growInfo 1s ease-in 1; /* Firefox < 16 */
+      -ms-animation: growInfo 1s ease-in 1; /* Internet Explorer */
+       -o-animation: growInfo 1s ease-in 1; /* Opera < 12.1 */
+          animation: growInfo 1s ease-in 1;
+  -webkit-animation-fill-mode: forwards; /* Safari 4.0 - 8.0 */
+          animation-fill-mode: forwards;
+}
+
+@keyframes growInfo {
+    0% {
+      background: none;
+      min-width: 0%;
+      min-height: 0vh;
+    }
+    100% {
+      background: #fff;
+      min-width: 80%;
+      min-height: 70vh;
+     }
+}
+
+.info-text {
+  display: none;
+}
+
+.home {
+  height: calc(100vh);
+  padding: 0;
+  border-bottom: 4px solid #e033ff;
+}
+
+.canvas {
+  position: absolute;
+  top:  0;
+  left: 0;
+  overflow: hidden;
+}
+
+.circle {
+  position: absolute;
+  border-radius: 50%;
+  will-change: left, top, width, height;
+
+}
+
+.circle-1 {
+  transition: transform 3s;
+  transition-timing-function: linear;
+
+}
+
+.circle-2 {
+  animation: rotate-cw 75s linear infinite;
+  will-change: left, top;
+}
+
+@keyframes moveL {
+  50%  {left: -0%}
+  100%  {left: 95%}
+}
+
+@keyframes moveR {
+  50%  {left: 95%}
+  100%  {left: -0%}
+}
+
+@keyframes moveU {
+  50%  {top: -0%}
+  100%  {top: 100%}
+}
+
+@keyframes moveD {
+  50%  {top: 100%}
+  100%  {top: -0%}
+}
+
+@keyframes rotate-ccw {
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+@keyframes rotate-cw {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.form-row {
+    padding: 12px 10px;
+    .form-small-txt {
+      font-size: .7em;
+    }
+}
+.darker {
+  background-color: @light-gray;
+}
+
+.lede {
+  padding: 0 20px;
+  z-index: 1;
+}
+
+.overlay {
+  background: fade(@darker-purple, 50%);
+  color:       @white;
+  text-shadow: @dark-shadow;
+  text-align:  right;
+}
+
+.text-left {text-align: left;}
+
+.content {
+  font-family: 'Montserrat', sans-serif;
+  line-height: 12pt;
+  font-size:   10pt;
+  border-bottom: 4px solid @dark-blue;
+  h1 {color: @darkest-purple;}
+  h5 {
+    margin: 5px 0;
+    text-align: center;
+  }
+}
+
+.about {padding: 20px 0;}
+
+.bio {
+  align-self: flex-start;
+  margin-top: 20px;
+}
+
+.row-container {flex: 71%;}
+
+.links {
+  background: none;
+  min-height: 150px;
+  h5{margin:20px}
+}
+
+@supports (--css: variables) {
+	input[type="range"].multirange {
+		padding: 0;
+		margin: 0;
+		display: inline-block;
+		vertical-align: top;
+	}
+
+	input[type="range"].multirange.original {
+		position: absolute;
+	}
+
+		input[type="range"].multirange.original::-webkit-slider-thumb {
+			position: relative;
+			z-index: 2;
+		}
+
+		input[type="range"].multirange.original::-moz-range-thumb {
+			transform: scale(1); /* FF doesn't apply position it seems */
+			z-index: 1;
+		}
+
+		input[type="range"].multirange::-moz-range-track {
+			border-color: transparent; /* needed to switch FF to "styleable" control */
+		}
+
+	input[type="range"].multirange.ghost {
+		position: relative;
+		background: var(--track-background);
+		--track-background: linear-gradient(to right,
+				transparent var(--low), var(--range-color) 0,
+				var(--range-color) var(--high), transparent 0
+			) no-repeat 0 45% / 100% 40%;
+		--range-color: hsl(190, 80%, 40%);
+	}
+
+		input[type="range"].multirange.ghost::-webkit-slider-runnable-track {
+			background: var(--track-background);
+		}
+
+		input[type="range"].multirange.ghost::-moz-range-track {
+			background: var(--track-background);
+		}
+
+}
