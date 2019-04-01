@@ -2,24 +2,22 @@ const circles = [];
 let color;
 let bgColor = '#FFFFFF';
 let count = 0;
-//let sizeInput = [8, 8];
 let speedInput = [1, 1];
 const canvas2 = document.getElementById('bg2');
 const ctx2 = canvas2.getContext('2d');
-// const movement = ['rotate', 'move', 'move2', 'rotate'];
 const movement = ['move'];
 const colors = [];
 const strokeColors = [];
 const canvas = {
   element: document.getElementById('bg'),
-  width: `500px`,
-  height: `500px`,
   initialize: function(bgc) {
+    const cvsContainer = window.getComputedStyle(document.getElementById('circles_spot'), null);
+    const cvsWidth = parseInt(cvsContainer.getPropertyValue('width'));
     circles.length = 0;
     count = 0;
-    this.width = 500;
+    this.width = cvsWidth;
     this.height = 500;
-    this.element.style.width = `500px`;
+    this.element.style.width = `${cvsWidth}px`;
     this.element.style.height = `500px`;
     ctx2.canvas.width = this.width;
     ctx2.canvas.height = this.height;
@@ -111,7 +109,6 @@ const Circle = {
       let circBlock = this.radiusStroke * 3.3;
       ctx2.clearRect((this.x - (circBlock / 2)), (this.y - (circBlock / 2)),
         circBlock, circBlock);
-        console.log(bgColor);
       jQuery(this.element).css({
         boxShadow: `0 0 0 3px ${this.strokeStyle}`,
         border: `3px solid ${bgColor}`,
@@ -214,22 +211,15 @@ function rgbToHsl(c) {
   }
   h = Math.round(360 * h);
   colors.push(h);
-  //console.log(`h: ${h}`)
-  // return [h, s, l];
 }
-
 
 document.getElementById('generate').addEventListener('click', function(e) {
   e.preventDefault();
-  // numberInput = document.getElementById('number').value;
-  // colorsInput = document.getElementById('colors').value;
   bgColor = document.getElementById('bgColor').value;
   const colorInputs = document.getElementsByName('colors');
   colorInputs.forEach(function(e) {
     rgbToHsl(e.value);
   });
   canvas.initialize(bgColor);
-
-  // console.log(`${sizeInput} | ${speedInput}`);
   newCircle();
 });

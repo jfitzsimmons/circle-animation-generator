@@ -36,7 +36,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 </head>
 <!--
-<nav class="flex">
+<nav >
 
   <div class="top-nav" id="nav">
     <a class="page-link" href="#home">Home</a>
@@ -52,98 +52,80 @@
 </nav>
 -->
 
-<section id="main" class="flex">
-
+<section id="main">
   <div class="flex row">
     <div class="flex">
-
-
-      <div id="circles_spot" class="circles_spot" style="width: 500px; height: 500px;">
-        <canvas id="bg2" class="canvas"></canvas>
-        <div id="bg" class="canvas"></div>
-      </div>
-    </div>
-    <div class="flex form-container">
       <form>
-        <div class="form-row darker">
-          <h1>Generate some circles</h1>
-        </div>
-        <div class="form-row flex row">
-          <label class="flex"># of Circles:</label>
-          <div class="flex">
+        <ul class="form-wrapper">
+          <li class="form-row darker">
+            <h1>make some circles</h1>
+          </li>
+          <li class="form-row">
+            <label>Amount:</label>
+
             <input type="text" id="number" name="number" value="10" size="3" />
-          </div>
-        </div>
-        <div class="form-row flex row">
-          <label class="flex">Colors:</label>
-          <div class="flex">
+
+          </li>
+          <li class="form-row">
+            <label>Colors:</label>
+
             <input type="color" id="color1" name="colors" value="#506EE5">
             <input type="color" id="color2" name="colors" value="#68B2F8">
             <input type="color" id="color3" name="colors" value="#7037CD">
-          </div>
-        </div>
-        <div class="form-row flex row">
-          <label class="flex">Background: </label>
-          <div class="flex">
-            <input type="color" id="bgColor" name="bgColor" value="#1D0C20">
-          </div>
-        </div>
-        <div class="form-row flex row">
-          <label class="flex">Sizes: </label>
-          <div class="">
-            <span class="form-small-txt">small ------> large</span>
-            <div class="flex">
 
-              <input class="flex row" type="range" id="size" name="size" min="8" max="80" multiple value="20,60" />
+          </li>
+          <li class="form-row">
+            <label>Background: </label>
+
+            <input type="color" id="bgColor" name="bgColor" value="#1D0C20">
+
+          </li>
+          <li class="form-row">
+            <label>Sizes: </label>
+            <div>
+              <span class="form-small-txt">small ---------> large</span>
+
+              <br />
+              |<input type="range" id="size" name="size" min="8" max="80" multiple value="20,60" />|
+
             </div>
-          </div>
-        </div>
-        <div class="form-row flex row">
-          <label>Speeds:</label>
-          <div class="">
-            <span class="form-small-txt">slow  ------>  fast</span>
-            <div class="flex">
-              <input type="range" id="speed" name="speed" min="1" max="50" multiple value="10,40" />
+          </li>
+          <li class="form-row">
+            <label>Speeds:</label>
+            <div>
+              <span class="form-small-txt">slow &nbsp;--------->&nbsp; fast</span>
+              <br />
+              |<input type="range" id="speed" name="speed" min="1" max="50" multiple value="10,40" />|
+
             </div>
-          </div>
-        </div>
-        <div class="form-row">
-          <label>Type of Animation:</label>
-          <div class="form-small-txt">
-            <input type="radio" name="type" value="revolving" />
-            Revolving
-            <br />
-            <input type="radio" name="type" value="bouncecss" />
-            Bounce CSS
-            <br />
-            <input type="radio" name="type" value="bouncejs" />
-            Bounce JS
-            <br />
-            <input type="radio" name="type" value="random" />
-            Random
-          </div>
-        </div>
-        <div class="form-row darker">
-          <input type="submit" id="generate" value="Generate" />
-        </div>
+          </li>
+          <li class="form-row">
+            <label>Animation:</label>
+            <div class="form-small-txt">
+              <input type="radio" name="type" value="bouncejs" checked="checked" />
+              <span>Bounce JS</span>
+              <br />
+              <input type="radio" name="type" value="bouncecss" disabled="disabled" />
+              <span class="disabled">Bounce CSS</span>
+              <br />
+              <input type="radio" name="type" value="revolving" disabled="disabled" />
+              <span class="disabled">Revolving</span>
+              <br />
+              <input type="radio" name="type" value="random" disabled="disabled" />
+              <span class="disabled">Random</span>
+            </div>
+          </li>
+          <li class="form-row darker">
+            <input type="submit" id="generate" value="Generate" />
+          </li>
+        </ul>
       </form>
-      <div class="info">
-        <i class="fas fa-info-circle"></i>
-        <i class="fas fa-times-circle"></i>
-        <div class="info-text">
-          <p>
-            I spent most of my time working on the Home section so this section is
-            lacking. I’m not a fan of talking about myself, and had to come up with
-            a way to fill this section with enough material. My photo is outdated
-            and a little smug. This section definitely needs a second pass. I’ll
-            probably go with a more minimal aesthetic.
-          </p>
-        </div>
-      </div>
+    </div>
+    <div id="circles_spot" class="circles-spot flex">
+      <canvas id="bg2" class="canvas"></canvas>
+      <div id="bg" class="canvas"></div>
     </div>
   </div>
-
-
 </section>
 
 <section id="links" class="links content">
