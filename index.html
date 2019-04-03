@@ -1,7 +1,5 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
-
 <head>
-
   <script type="text/javascript">
     WebFontConfig = {
       google: {
@@ -18,24 +16,22 @@
       s.parentNode.insertBefore(wf, s);
     })();
   </script>
-
+  <script src="js/less.min.js" type="text/javascript" async></script>
   <title>Let's generate some circles that move around</title>
-
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#28112c" />
-
   <link rel="stylesheet/less" href="css/style.less" type="text/css" />
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
-
   <link rel="apple-touch-icon" sizes="120x120" href="apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
   <link rel="shortcut icon" href="favicon.ico">
-
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 </head>
-<!--
+
+<body style="visibility: hidden;">
+  <!--
 <nav >
 
   <div class="top-nav" id="nav">
@@ -51,86 +47,84 @@
 
 </nav>
 -->
+  <section id="main">
+    <div class="flex row">
+      <div class="flex">
+        <form>
+          <ul class="form-wrapper">
+            <li class="form-row darker">
+              <h1>make some circles</h1>
+            </li>
+            <li class="form-row">
+              <label>Amount:</label>
 
-<section id="main">
-  <div class="flex row">
-    <div class="flex">
-      <form>
-        <ul class="form-wrapper">
-          <li class="form-row darker">
-            <h1>make some circles</h1>
-          </li>
-          <li class="form-row">
-            <label>Amount:</label>
+              <input type="text" id="number" name="number" value="10" size="3" />
 
-            <input type="text" id="number" name="number" value="10" size="3" />
+            </li>
+            <li class="form-row">
+              <label>Colors:</label>
 
-          </li>
-          <li class="form-row">
-            <label>Colors:</label>
+              <input type="color" id="color1" name="colors" value="#506EE5">
+              <input type="color" id="color2" name="colors" value="#68B2F8">
+              <input type="color" id="color3" name="colors" value="#7037CD">
 
-            <input type="color" id="color1" name="colors" value="#506EE5">
-            <input type="color" id="color2" name="colors" value="#68B2F8">
-            <input type="color" id="color3" name="colors" value="#7037CD">
+            </li>
+            <li class="form-row">
+              <label>Background: </label>
 
-          </li>
-          <li class="form-row">
-            <label>Background: </label>
+              <input type="color" id="bgColor" name="bgColor" value="#FFFFFF">
 
-            <input type="color" id="bgColor" name="bgColor" value="#1D0C20">
+            </li>
+            <li class="form-row">
+              <label>Sizes: </label>
+              <div>
+                <span class="form-small-txt">small ---------> large</span>
 
-          </li>
-          <li class="form-row">
-            <label>Sizes: </label>
-            <div>
-              <span class="form-small-txt">small ---------> large</span>
+                <br />
+                |<input type="range" id="size" name="size" min="8" max="80" multiple value="20,60" />|
 
-              <br />
-              |<input type="range" id="size" name="size" min="8" max="80" multiple value="20,60" />|
+              </div>
+            </li>
+            <li class="form-row">
+              <label>Speeds:</label>
+              <div>
+                <span class="form-small-txt">slow &nbsp;--------->&nbsp; fast</span>
+                <br />
+                |<input type="range" id="speed" name="speed" min="1" max="50" multiple value="10,40" />|
 
-            </div>
-          </li>
-          <li class="form-row">
-            <label>Speeds:</label>
-            <div>
-              <span class="form-small-txt">slow &nbsp;--------->&nbsp; fast</span>
-              <br />
-              |<input type="range" id="speed" name="speed" min="1" max="50" multiple value="10,40" />|
-
-            </div>
-          </li>
-          <li class="form-row">
-            <label>Animation:</label>
-            <div class="form-small-txt">
-              <input type="radio" name="type" value="bouncejs" checked="checked" />
-              <span>Bounce JS</span>
-              <br />
-              <input type="radio" name="type" value="bouncecss" disabled="disabled" />
-              <span class="disabled">Bounce CSS</span>
-              <br />
-              <input type="radio" name="type" value="revolving" disabled="disabled" />
-              <span class="disabled">Revolving</span>
-              <br />
-              <input type="radio" name="type" value="random" disabled="disabled" />
-              <span class="disabled">Random</span>
-            </div>
-          </li>
-          <li class="form-row darker">
-            <input type="submit" id="generate" value="Generate" />
-          </li>
-        </ul>
-      </form>
+              </div>
+            </li>
+            <li class="form-row">
+              <label>Animation:</label>
+              <div class="form-small-txt">
+                <input type="radio" name="type" value="bouncejs" checked="checked" />
+                <span>Bounce JS</span>
+                <br />
+                <input type="radio" name="type" value="bouncecss" disabled="disabled" />
+                <span class="disabled">Bounce CSS</span>
+                <br />
+                <input type="radio" name="type" value="revolving" disabled="disabled" />
+                <span class="disabled">Revolving</span>
+                <br />
+                <input type="radio" name="type" value="random" disabled="disabled" />
+                <span class="disabled">Random</span>
+              </div>
+            </li>
+            <li class="form-row darker">
+              <input type="submit" id="generate" value="Generate" />
+            </li>
+          </ul>
+        </form>
+      </div>
+      <div id="circles_spot" class="circles-spot flex">
+        <canvas id="bg2" class="canvas"></canvas>
+        <div id="bg" class="canvas"></div>
+      </div>
     </div>
-    <div id="circles_spot" class="circles-spot flex">
-      <canvas id="bg2" class="canvas"></canvas>
-      <div id="bg" class="canvas"></div>
-    </div>
-  </div>
-</section>
-
+  </section>
+  <!--
 <section id="links" class="links content">
   <div class="flex row">
-
   </div>
   <div class="info">
     <i class="fas fa-info-circle"></i>
@@ -147,11 +141,9 @@
     </div>
   </div>
 </section>
-<script src="js/multirange.js" type="text/javascript" defer></script>
-<script src="js/bg.js" type="text/javascript" defer></script>
-<script src="js/init.js" type="text/javascript" defer></script>
-<script src="js/less.min.js" type="text/javascript" async></script>
+-->
 
+  <script src="js/multirange.js" type="text/javascript" defer></script>
+  <script src="js/bg.min.js" type="text/javascript" defer></script>
 </body>
-
 </html>

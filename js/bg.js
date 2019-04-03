@@ -106,9 +106,9 @@ const CIRCLES = (function() {
           c.addStroke(c, (Math.PI * 2) * c.curr / 100 + c.start);
         });
       } else {
-        let circBlock = this.radiusStroke * 3.3;
+        const circBlock = this.radiusStroke * 3.3;
         ctx2.clearRect((this.x - (circBlock / 2)), (this.y - (circBlock / 2)),
-          circBlock, circBlock);
+            circBlock, circBlock);
         jQuery(this.element).css({
           boxShadow: `0 0 0 3px ${this.strokeStyle}`,
           border: `3px solid ${bgColor}`,
@@ -219,3 +219,4 @@ const CIRCLES = (function() {
     newCircle();
   });
 })();
+document.body.style.visibility = 'visible';
